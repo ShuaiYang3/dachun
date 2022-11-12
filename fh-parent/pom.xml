@@ -1,0 +1,1067 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--引入Spring Boot依赖管理-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.10.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <!--Maven项目坐标-->
+    <groupId>com.fuheng.ec</groupId>
+    <artifactId>fh-parent</artifactId>
+    <!--注意：吉象保通项目依赖版本号,如有依赖变更，修改此版本号发布到私有仓库-->
+    <version>1.0.0-SNAPSHOT</version>
+    <!--
+        <version>1.0.0-RELEASE</version>
+    -->
+    <packaging>pom</packaging>
+    <name>fh-parent</name>
+    <description>吉象保项目依赖父工程，注意不引入实际依赖</description>
+
+    <!--开发者信息-->
+    <developers>
+        <developer>
+            <id>jinp</id>
+            <name>jinpeng</name>
+            <email>jinpeng@hungraim.com</email>
+            <organization>CHINA FUHENG</organization>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git@139.224.63.153:8899/jinp/fh-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@139.224.63.153:8899/jinp/fh-parent.git</developerConnection>
+        <url>http://139.224.63.153:8899/jinp/fh-parent</url>
+    </scm>
+    <issueManagement>
+        <system>GitLab</system>
+        <url>http://139.224.63.153:8899/jinp/fh-parent/issues</url>
+    </issueManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Fuheng Release Repository</name>
+            <url>http://139.224.63.153:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Fuheng Snapshot Repository</name>
+            <url>http://139.224.63.153:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <site>
+            <id>fh-project-wiki</id>
+            <url>http://139.224.63.153:8081/JXB2/jxb-parent/-/wikis/home</url>
+        </site>
+        <downloadUrl>http://139.224.63.153:8081/#browse/search</downloadUrl>
+    </distributionManagement>
+
+    <!--
+            注意：工程属性描述，注意所有子工程的引入的依赖包版本号均需在此定义
+            添加时先查看spring-boot-dependencies是否存在对应属性配置
+    -->
+    <properties>
+        <!--sonar属性 https://docs.sonarqube.org/latest/analysis/analysis-parameters/-->
+        <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+        <java.encoding>UTF-8</java.encoding>
+
+        <!--外部依赖包版本号-->
+        <spring-cloud-dependencies.version>Hoxton.SR11</spring-cloud-dependencies.version>
+        <spring-data-releasetrain.version>Neumann-SR2</spring-data-releasetrain.version>
+        <!--spring-cloud-alibaba非适配版本-->
+        <spring-cloud-alibaba-dependencies.version>2.2.5.RELEASE</spring-cloud-alibaba-dependencies.version>
+        <swagger-annotations.version>1.5.20</swagger-annotations.version>
+        <springfox.swagger.version>2.9.2</springfox.swagger.version>
+        <knife4j-spring-ui.version>2.0.5</knife4j-spring-ui.version>
+        <redisson.version>3.13.2</redisson.version>
+        <discovery.version>6.0.6</discovery.version>
+        <shardingsphere.version>4.1.1</shardingsphere.version>
+        <mybatis-spring-boot-starter.version>2.1.3</mybatis-spring-boot-starter.version>
+        <mapper-spring-boot-starter.version>2.1.5</mapper-spring-boot-starter.version>
+        <tk.mybatis.mapper.version>4.1.5</tk.mybatis.mapper.version>
+        <pagehelper-spring-boot-starter.version>1.3.0</pagehelper-spring-boot-starter.version>
+        <pagehelper.version>5.2.0</pagehelper.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
+        <apollo-client.version>1.6.2</apollo-client.version>
+        <poi.version>4.1.2</poi.version>
+        <testng.version>7.1.0</testng.version>
+        <guava.version>29.0-jre</guava.version>
+        <commons-text.version>1.9</commons-text.version>
+        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <fastjson.version>1.2.73</fastjson.version>
+        <druid.version>1.1.23</druid.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <pinyin4j.version>2.5.1</pinyin4j.version>
+        <commons-net.version>3.6</commons-net.version>
+        <commons-compress.version>1.20</commons-compress.version>
+        <xstream.version>1.4.12</xstream.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <joda-time.version>2.10.6</joda-time.version>
+        <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
+        <micrometer.version>1.5.1</micrometer.version>
+        <prometheus.version>0.9.0</prometheus.version>
+        <xxl-job.version>2.2.0</xxl-job.version>
+        <zxing.version>3.4.0</zxing.version>
+        <jmh.version>1.23</jmh.version>
+        <easyexcel.version>2.2.6</easyexcel.version>
+        <jmh.vesion>1.23</jmh.vesion>
+        <jmimemagic.version>0.1.5</jmimemagic.version>
+        <zipkin.version>2.12.9</zipkin.version>
+        <jodd.version>5.1.5</jodd.version>
+        <jodd-upload.version>4.2.0</jodd-upload.version>
+        <bouncycastle.version>1.66</bouncycastle.version>
+        <hessian.version>4.0.63</hessian.version>
+        <hessian-scv-utils.version>0.0.1</hessian-scv-utils.version>
+        <pdfbox.version>2.0.20</pdfbox.version>
+        <axis.version>1.4</axis.version>
+        <feign-form.version>3.8.0</feign-form.version>
+        <thumbnailator.version>0.4.11</thumbnailator.version>
+        <flying-saucer.version>9.1.20</flying-saucer.version>
+        <itextpdf.version>5.5.13.2</itextpdf.version>
+        <itext-asian.version>5.2.0</itext-asian.version>
+        <html2image.version>0.1.0</html2image.version>
+        <logstash-logback-encoder.version>6.4</logstash-logback-encoder.version>
+        <aviator.version>5.1.2</aviator.version>
+        <SensorsAnalyticsSDK.version>3.1.16</SensorsAnalyticsSDK.version>
+        <jwks-rsa.version>0.12.0</jwks-rsa.version>
+        <jose4j.version>0.7.2</jose4j.version>
+        <jpush-client.version>3.4.5</jpush-client.version>
+        <aliyun-java-sdk-push.version>3.13.3</aliyun-java-sdk-push.version>
+        <aliyun-java-sdk-core.version>4.5.5</aliyun-java-sdk-core.version>
+        <gexin-rp-sdk-http.version>4.1.0.5</gexin-rp-sdk-http.version>
+        <gexin-rp-sdk-base.version>4.0.0.30</gexin-rp-sdk-base.version>
+        <gexin-rp-fastjson.version>1.0.0.3</gexin-rp-fastjson.version>
+        <gexin-rp-sdk-template.version>4.0.0.24</gexin-rp-sdk-template.version>
+        <protobuf-java.version>4.0.0-rc-2</protobuf-java.version>
+        <reactor-bom.version>Dysprosium-SR10</reactor-bom.version>
+        <reactor-net.version>2.0.8.RELEASE</reactor-net.version>
+        <netty-bom.version>4.1.51.Final</netty-bom.version>
+        <jsoup.version>1.13.1</jsoup.version>
+        <shiro.version>1.5.3</shiro.version>
+        <thymeleaf-extras-shiro.version>2.0.0</thymeleaf-extras-shiro.version>
+        <UserAgentUtils.version>1.21</UserAgentUtils.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <jna.version>5.6.0</jna.version>
+        <jsch.version>0.1.55</jsch.version>
+        <org.json.version>20200518</org.json.version>
+        <jersey-core.version>1.19.4</jersey-core.version>
+        <mybatis-generator-maven-plugin.version>1.4.0</mybatis-generator-maven-plugin.version>
+        <com.squareup.okhttp.version>2.7.5</com.squareup.okhttp.version>
+        <com.squareup.okio.version>1.17.2</com.squareup.okio.version>
+
+        <lombok.version>1.18.12</lombok.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+
+        <!--内部依赖包版本号-->
+        <anysign-client.version>2.0.0</anysign-client.version>
+        <cn.org.bjca.anysign.version>1.0</cn.org.bjca.anysign.version>
+        <imageupload.version>1.0</imageupload.version>
+        <cif-verify-service.version>1.0</cif-verify-service.version>
+        <tpl-eservice-base.version>1.0</tpl-eservice-base.version>
+        <kfgl.version>0.0.1</kfgl.version>
+        <com.cntaiping.intserv.base.version>1.5.2</com.cntaiping.intserv.base.version>
+        <taiping-sms.version>1.0</taiping-sms.version>
+
+        <!-- MyBatis Generator -->
+        <mybatis-plus.version>3.4.0</mybatis-plus.version>
+        <target.java.project>${basedir}/src/main/java</target.java.project>
+        <target.resources.project>${basedir}/src/main/resources</target.resources.project>
+        <target.xml.package>mybatis\sqlmap</target.xml.package>
+
+    </properties>
+
+
+    <!--
+            注意：吉象保项目统一依赖管理，添加时先查看spring-boot-dependencies是否存在对应依赖包配置
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 引入Spring Cloud依赖管理 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 引入Spring Data依赖管理 -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>${spring-data-releasetrain.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 引入Spring Cloud Alibaba依赖管理 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--灰度发布：Nepxion Discovery https://github.com/Nepxion/Discovery-->
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery</artifactId>
+                <version>${discovery.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- 接口UI: Springfox Swagger UI-->
+            <!-- swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-bean-validators</artifactId>
+                <version>{springfox.swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox.swagger.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>mapstruct</artifactId>
+                        <groupId>org.mapstruct</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>jsr305</artifactId>
+                        <groupId>com.google.code.findbugs</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>javassist</artifactId>
+                        <groupId>org.javassist</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox.swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
+            <!-- https://gitee.com/xiaoym/knife4j https://github.com/xiaoymin/Swagger-Bootstrap-UI -->
+            <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-spring-ui -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-ui</artifactId>
+                <version>${knife4j-spring-ui.version}</version>
+            </dependency>
+
+            <!-- 分布式锁： Redisson -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <!--数据分片/分布式事务： ShardingSphere-JDBC-->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <!-- 使用 XA 事务时，需要引入此模块 -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-transaction-xa-core</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <!-- 使用 BASE 事务时，需要引入此模块 -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-transaction-base-seata-at</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+
+            <!--分布式治理： ShardingSphere-JDBC -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-orchestration-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <!-- 使用 ZooKeeper 时，需要引入此模块 -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-orchestration-repository-zookeeper-curator</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <!-- 使用 Etcd 时，需要引入此模块 -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-orchestration-repository-etcd</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+
+            <!-- MyBatis Spring Boot Starter -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!-- MyBatis通用Mapper3: Mapper Spring Boot Starter http://mybatis.tk -->
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mapper-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- Mapper -->
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper</artifactId>
+                <version>${tk.mybatis.mapper.version}</version>
+            </dependency>
+
+            <!-- OkHttp  -->
+            <dependency>
+                <groupId>com.squareup.okhttp</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${com.squareup.okhttp.version}</version>
+            </dependency>
+
+            <!--Okio: A modern I/O API for Java-->
+            <dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio</artifactId>
+                <version>${com.squareup.okio.version}</version>
+            </dependency>
+
+            <!-- 分页工具： PageHelper Spring Boot Starter  -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- PageHelper 5 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+
+            <!-- Apache Commons BeanUtils -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+            </dependency>
+
+            <!-- Apollo Client  -->
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo-client</artifactId>
+                <version>${apollo-client.version}</version>
+            </dependency>
+
+            <!---Apache POI -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml-schemas</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!-- TestNG -->
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Guava: Google Core Libraries For Java  -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <!-- Apache Commons Text -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
+            </dependency>
+
+            <!-- Apache Commons FileUpload  -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+
+            <!--Fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- Druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!-- Druid Spring Boot Starter  -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+
+            <!-- JSON Web Token Support For The JVM  -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <!-- Chinese to Pinyin  -->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>${pinyin4j.version}</version>
+            </dependency>
+
+            <!-- Apache Commons Net » -->
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+
+            <!-- Apache Commons Compress  -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons-compress.version}</version>
+            </dependency>
+
+            <!--XStream Core  -->
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>${xstream.version}</version>
+            </dependency>
+
+            <!--Dom4J-->
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
+            </dependency>
+
+            <!--Joda Time-->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
+            <!-- Micrometer BOM  -->
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-bom</artifactId>
+                <version>${micrometer.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Micrometer Registry Prometheus   -->
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-registry-prometheus</artifactId>
+                <version>${micrometer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-core</artifactId>
+                <version>${micrometer.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Prometheus Java Simpleclient Servlet  -->
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient_servlet</artifactId>
+                <version>${prometheus.version}</version>
+            </dependency>
+            <!--Prometheus Java Simpleclient Hotspot -->
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient_hotspot</artifactId>
+                <version>${prometheus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient_common</artifactId>
+                <version>${prometheus.version}</version>
+            </dependency>
+            <!--XXL Job Core  -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
+            </dependency>
+
+            <!-- ZXing Core -->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+            <!--ZXing Java SE Extensions  -->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>javase</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+
+            <!-- Easyexcel  -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+
+            <!--JMH Core -->
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-core</artifactId>
+                <version>${jmh.version}</version>
+            </dependency>
+            <!-- JMH Generators: Annotation Processors -->
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-generator-annprocess</artifactId>
+                <version>${jmh.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!--JMimeMagic  -->
+            <dependency>
+                <groupId>net.sf.jmimemagic</groupId>
+                <artifactId>jmimemagic</artifactId>
+                <version>${jmimemagic.version}</version>
+            </dependency>
+
+            <!--Zipkin Auto Configuration: Ui -->
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-autoconfigure-ui</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+            <!-- Zipkin Server  -->
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-server</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+
+            <!--Spring Boot Admin Build -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-build</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--Jodd BOM -->
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-bom</artifactId>
+                <version>${jodd.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--Jodd Upload -->
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-upload</artifactId>
+                <version>${jodd-upload.version}</version>
+            </dependency>
+
+
+            <!--Bouncy Castle Provider -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${bouncycastle.version}</version>
+            </dependency>
+            <!-- Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs » -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-jdk15on</artifactId>
+                <version>${bouncycastle.version}</version>
+            </dependency>
+
+
+            <!-- Hessian -->
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>${hessian.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian-scv-utils</artifactId>
+                <version>${hessian-scv-utils.version}</version>
+            </dependency>
+
+            <!-- Apache PDFBox-->
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>pdfbox</artifactId>
+                <version>${pdfbox.version}</version>
+            </dependency>
+            <!--Apache FontBox -->
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>fontbox</artifactId>
+                <version>${pdfbox.version}</version>
+            </dependency>
+            <!--Apache PDFBox Tools  -->
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>pdfbox-tools</artifactId>
+                <version>${pdfbox.version}</version>
+            </dependency>
+
+            <!--Axis Web Services  -->
+            <dependency>
+                <groupId>axis</groupId>
+                <artifactId>axis</artifactId>
+                <version>${axis.version}</version>
+            </dependency>
+
+            <!-- Open Feign Forms Extension For Spring -->
+            <dependency>
+                <groupId>io.github.openfeign.form</groupId>
+                <artifactId>feign-form-spring</artifactId>
+                <version>${feign-form.version}</version>
+            </dependency>
+
+            <!--Thumbnailator - a thumbnail generation library for Java-->
+            <dependency>
+                <groupId>net.coobird</groupId>
+                <artifactId>thumbnailator</artifactId>
+                <version>${thumbnailator.version}</version>
+            </dependency>
+
+            <!--Flying Saucer Core Renderer -->
+            <dependency>
+                <groupId>org.xhtmlrenderer</groupId>
+                <artifactId>flying-saucer-core</artifactId>
+                <version>${flying-saucer.version}</version>
+            </dependency>
+            <!-- Flying Saucer PDF Rendering (iText 5.x) -->
+            <dependency>
+                <groupId>org.xhtmlrenderer</groupId>
+                <artifactId>flying-saucer-pdf-itext5</artifactId>
+                <version>${flying-saucer.version}</version>
+            </dependency>
+
+            <!-- IText Core  -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itextpdf</artifactId>
+                <version>${itextpdf.version}</version>
+            </dependency>
+            <!-- IText XML Worker  -->
+            <dependency>
+                <groupId>com.itextpdf.tool</groupId>
+                <artifactId>xmlworker</artifactId>
+                <version>${itextpdf.version}</version>
+            </dependency>
+            <!-- IText, A Free Java PDF Library  -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itext-asian</artifactId>
+                <version>${itext-asian.version}</version>
+            </dependency>
+
+            <!--Html2image -->
+            <dependency>
+                <groupId>com.github.xuwei-k</groupId>
+                <artifactId>html2image</artifactId>
+                <version>${html2image.version}</version>
+            </dependency>
+
+            <!-- Logstash Logback Encoder -->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback-encoder.version}</version>
+            </dependency>
+
+
+            <!--Aviator:A lightweight, high performance expression evaluator for java -->
+            <dependency>
+                <groupId>com.googlecode.aviator</groupId>
+                <artifactId>aviator</artifactId>
+                <version>${aviator.version}</version>
+            </dependency>
+
+            <!-- SensorsAnalyticsSDK -->
+            <dependency>
+                <groupId>com.sensorsdata.analytics.javasdk</groupId>
+                <artifactId>SensorsAnalyticsSDK</artifactId>
+                <version>${SensorsAnalyticsSDK.version}</version>
+            </dependency>
+
+            <!-- JWKS RSA：JSON Web Key Set parser library -->
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>jwks-rsa</artifactId>
+                <version>${jwks-rsa.version}</version>
+            </dependency>
+
+            <!-- JOSE4j -->
+            <dependency>
+                <groupId>org.bitbucket.b_c</groupId>
+                <artifactId>jose4j</artifactId>
+                <version>${jose4j.version}</version>
+            </dependency>
+
+            <!-- JPush API Java Client  -->
+            <dependency>
+                <groupId>cn.jpush.api</groupId>
+                <artifactId>jpush-client</artifactId>
+                <version>${jpush-client.version}</version>
+            </dependency>
+
+            <!-- Aliyun Java SDK Push  -->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-push</artifactId>
+                <version>${aliyun-java-sdk-push.version}</version>
+            </dependency>
+            <!-- Aliyun Java SDK Core-->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun-java-sdk-core.version}</version>
+            </dependency>
+
+
+            <!-- Gexin Rp SDK HTTP-->
+            <dependency>
+                <groupId>com.gexin.platform</groupId>
+                <artifactId>gexin-rp-sdk-http</artifactId>
+                <version>${gexin-rp-sdk-http.version}</version>
+            </dependency>
+            <!--Gexin Rp SDK Base  -->
+            <dependency>
+                <groupId>com.gexin.platform</groupId>
+                <artifactId>gexin-rp-sdk-base</artifactId>
+                <version>${gexin-rp-sdk-base.version}</version>
+            </dependency>
+            <!--Gexin Rp SDK Template  -->
+            <dependency>
+                <groupId>com.gexin.platform</groupId>
+                <artifactId>gexin-rp-sdk-template</artifactId>
+                <version>${gexin-rp-sdk-template.version}</version>
+            </dependency>
+            <!-- Gexin Rp Fastjson -->
+            <dependency>
+                <groupId>com.gexin.platform</groupId>
+                <artifactId>gexin-rp-fastjson</artifactId>
+                <version>${gexin-rp-fastjson.version}</version>
+            </dependency>
+
+            <!-- Protocol Buffers [Core] -->
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf-java.version}</version>
+            </dependency>
+
+            <!-- Reactor TCP Components -->
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-net</artifactId>
+                <version>${reactor-net.version}</version>
+            </dependency>
+            <!-- Project Reactor 3 Release Train BOM -->
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-bom</artifactId>
+                <version>${reactor-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Netty/BOM  -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>${netty-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- JSoup Java HTML Parser  -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+
+            <!--Apache Shiro :: Core  -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <!--Apache Shiro :: Support :: Spring -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <!--Apache Shiro :: Support :: EHCache  -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-ehcache</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+
+            <!-- Thymeleaf Extras Shiro  -->
+            <dependency>
+                <groupId>com.github.theborakompanioni</groupId>
+                <artifactId>thymeleaf-extras-shiro</artifactId>
+                <version>${thymeleaf-extras-shiro.version}</version>
+            </dependency>
+
+            <!--User Agent Utils  -->
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${UserAgentUtils.version}</version>
+            </dependency>
+
+            <!--Kaptcha:commons is a little java tool to make your development easier in your work. -->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+
+            <!-- Java Native Access  -->
+            <dependency>
+                <groupId>net.java.dev.jna</groupId>
+                <artifactId>jna</artifactId>
+                <version>${jna.version}</version>
+            </dependency>
+            <!--Java Native Access Platform  -->
+            <dependency>
+                <groupId>net.java.dev.jna</groupId>
+                <artifactId>jna-platform</artifactId>
+                <version>${jna.version}</version>
+            </dependency>
+
+            <!--JSch：JSch is a pure Java implementation of SSH2  -->
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>${jsch.version}</version>
+            </dependency>
+
+            <!--
+            JSON In Java : JSON is a light-weight, language independent, data interchange format.
+             See http://www.JSON.org/ The files in this package implement JSON encoders/decoders in Java.
+             It also includes the capability to convert between JSON and XML, HTTP headers, Cookies, and CDL.
+             This is a reference implementation. There is a large number of JSON packages in Java.
+             Perhaps someday the Java community will standardize on one. Until then, choose carefully.
+             The license includes this restriction: "The software ...
+             -->
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${org.json.version}</version>
+            </dependency>
+
+            <!-- Jersey Core-->
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-core</artifactId>
+                <version>${jersey-core.version}</version>
+            </dependency>
+
+            <!--内部依赖: cn.org.bjca.anysign-->
+            <dependency>
+                <groupId>cn.org.bjca.anysign</groupId>
+                <artifactId>anysign-client</artifactId>
+                <version>${anysign-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.org.bjca.anysign</groupId>
+                <artifactId>BJCA_LOG</artifactId>
+                <version>${cn.org.bjca.anysign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.org.bjca.anysign</groupId>
+                <artifactId>BJCANetCoreClient</artifactId>
+                <version>${cn.org.bjca.anysign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.org.bjca.anysign</groupId>
+                <artifactId>BJCAProtoBuf</artifactId>
+                <version>${cn.org.bjca.anysign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.org.bjca.anysign</groupId>
+                <artifactId>AnywriteSignInfo_noprotobuf</artifactId>
+                <version>${cn.org.bjca.anysign.version}</version>
+            </dependency>
+
+            <!--内部依赖：imageupload-->
+            <dependency>
+                <groupId>com.ebao.life.elec.protal.hessian</groupId>
+                <artifactId>imageupload</artifactId>
+                <version>${imageupload.version}</version>
+            </dependency>
+
+            <!--内部依赖：cif-verify-service-->
+            <dependency>
+                <groupId>com.taiping</groupId>
+                <artifactId>cif-verify-service</artifactId>
+                <version>${cif-verify-service.version}</version>
+            </dependency>
+
+
+            <!--内部依赖：tpl-eservice-base-->
+            <dependency>
+                <groupId>com.taiping</groupId>
+                <artifactId>tpl-eservice-base</artifactId>
+                <version>${tpl-eservice-base.version}</version>
+            </dependency>
+
+            <!--内部依赖：kfgl-->
+            <dependency>
+                <groupId>tpp-ecservice-service</groupId>
+                <artifactId>kfgl</artifactId>
+                <version>${kfgl.version}</version>
+            </dependency>
+
+            <!--内部依赖：com.cntaiping.intserv.base-->
+            <dependency>
+                <groupId>com.cntaiping.intserv</groupId>
+                <artifactId>base</artifactId>
+                <version>${com.cntaiping.intserv.base.version}</version>
+            </dependency>
+
+            <!--内部依赖：taiping-sms-->
+            <dependency>
+                <groupId>taiping.sms</groupId>
+                <artifactId>taiping-sms</artifactId>
+                <version>${taiping-sms.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.aliyun.oss/aliyun-sdk-oss -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>3.11.0</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatisplus-spring-boot-starter -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatisplus-spring-boot-starter</artifactId>
+                <version>1.0.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.4.0</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.4.0</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>2.8.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <!--
+                        注意：插件版本管理，添加时先查看spring-boot-dependencies是否存在对应插件配置
+        lock down plugins versions to avoid using Maven defaults (may be moved to parent pom)
+        -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+                <!--scanner代码扫描-->
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.6.0.1398</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
